@@ -1,235 +1,212 @@
----
-layout: home
-title: Jekyll Gitbook Theme
-permalink: /
----
+# Not Pure Poole <!-- omit in toc -->
 
-Make Jelly site have a GitBook look!
+<a href="https://jekyll-themes.com">
+  <img src="https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg" height="20" alt="Jekyll Themes Shield" >
+</a>
 
-## Demo
+**Not Pure Poole** is a simple, beautiful, and powerful Jekyll theme for blogs. It is built on [Poole](https://github.com/poole/poole) and [Pure](https://purecss.io/).
 
-Live demo on Github Pages: [https://sighingnow.github.io/jekyll-gitbook](https://sighingnow.github.io/jekyll-gitbook)
-
-[![Jekyll Themes](https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg)](https://jekyll-themes.com/jekyll-gitbook/)
-
-## Why Jekyll with GitBook
-
-GitBook is an amazing frontend style to present and organize contents (such as book chapters
-and blogs) on Web. The typical to deploy GitBook at [Github Pages][1]
-is building HTML files locally and then push to Github repository, usually to the `gh-pages`
-branch. It's quite annoying to repeat such workload and make it hard for people do version
-control via git for when there are generated HTML files to be staged in and out.
-
-This theme takes style definition out of generated GitBook site and provided the template
-for Jekyll to rendering markdown documents to HTML, thus the whole site can be deployed
-to [Github Pages][1] without generating and uploading HTML bundle every time when there are
-changes to the original repo.
-
-## How to Get Started
-
-This theme can be used just as other [Jekyll themes][1] and support [remote theme][12],
-see [the official guide][13] as well.
-
-You can introduce this jekyll theme into your own site by either
-
-- [Fork][3] this repository and add your markdown posts to the `_posts` folder.
-- Use as a remote theme in your [`_config.yml`][14](just like what we do for this
-  site itself),
-
-```yaml
-remote_theme: sighingnow/jekyll-gitbook
-```
-
-### Deploy Locally with Jekyll Serve
-
-This theme can be ran locally using Ruby and Gemfiles.
-
-[Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) - GitHub
-
-## Full-text search
-
-The search functionality in jekyll-gitbook theme is powered by the [gitbook-plugin-search-pro][5] plugin and is enabled by default.
-
-[https://sighingnow.github.io/jekyll-gitbook/?q=generated](https://sighingnow.github.io/jekyll-gitbook/?q=generated)
-
-## Code highlight
-
-The code highlight style is configurable the following entry in `_config.yaml`:
-
-```yaml
-syntax_highlighter_style: colorful
-```
-
-The default code highlight style is `colorful`, the full supported styles can be found from [the rouge repository][6]. Customized
-style can be added to [./assets/gitbook/rouge/](./assets/gitbook/rouge/).
-
-## How to generate TOC
-
-The jekyll-gitbook theme leverages [jekyll-toc][4] to generate the *Contents* for the page.
-The TOC feature is not enabled by default. To use the TOC feature, modify the TOC
-configuration in `_config.yml`:
-
-```yaml
-toc:
-    enabled: true
-    h_min: 1
-    h_max: 3
-```
-
-## Google Analytics, etc.
-
-The jekyll-gitboook theme supports embedding the [Google Analytics][7], [CNZZ][8] and [Application Insights][9] website analytical tools with the following
-minimal configuration in `_config.yaml`:
-
-```yaml
-tracker:
-  google_analytics: "<YOUR GOOGLE ANALYTICS KEY, e.g, UA-xxxxxx-x>"
-```
-
-Similarly, CNZZ can be added with the following configuration in `_config.yaml`
-
-```yaml
-tracker:
-  cnzz: "<YOUR CNZZ ANALYTICS KEY, e.g., xxxxxxxx>"
-```
-
-Application Insights can be added with the following configuration in `_config.yaml`
-
-```yaml
-tracker:
-  application_insights: "<YOUR APPLICATION INSIGHTS CONNECTION STRING>"
-```
-
-## Disqus comments
-
-[Disqus](https://disqus.com/) comments can be enabled by adding the following configuration in `_config.yaml`:
-
-```yaml
-disqushandler: "<YOUR DISQUS SHORTNAME>"
-```
-
-## Jekyll collections
-
-Jekyll's [collections][15] is supported to organize the pages in a more fine-grained manner, e.g.,
-
-```yaml
-collections:
-  pages:
-    output: true
-    sort_by: date
-    permalink: /:collection/:year-:month-:day-:title:output_ext
-  others:
-    output: true
-    sort_by: date
-    permalink: /:collection/:year-:month-:day-:title:output_ext
-```
-
-An optional `ordered_collections` key can be added to `_config.yaml` to control the order of collections in the sidebar:
-
-```yaml
-ordered_collections:
-  - posts
-  - pages
-  - others
-```
-
-If not specified, the order of collections would be decided by Jekyll. Note that the key `posts` is a special collection
-that indicates the `_posts` pages of Jekyll.
-
-## Extra StyleSheet or Javascript elements
-
-You can add extra CSS or JavaScript references using configuration collections:
-
-- extra_css: for additional style sheets. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-- extra_header_js: for additional scripts to be included in the `<head>` tag, after the `extra_css` has been added. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-- extra_footer_js: for additional scripts to be included at the end of the HTML document, just before the site tracking script. If the url does not start by http, the path must be relative to the root of the site, without a starting `/`.
-
-## Customizing font settings
-
-The fonts can be customized by modifying the `.book.font-family-0` and `.book.font-family-1` entry in [`./assets/gitbook/custom.css`][10],
-
-```css
-.book.font-family-0 {
-    font-family: Georgia, serif;
-}
-.book.font-family-1 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-```
-
-## Tips, Warnings and Dangers blocks
-
-The jekyll-gitbook theme supports customized kramdown attributes (`{: .block-tip }`, `{: .block-warning }`,
-`{: .block-danger }`) like that displayed in [the discord.js website][11]. The marker can be used like
-
-```markdown
-> ##### TIP
+> Poole explains that Jekyll has been asking for a particular chemical for days now but every time it has been fetched for him he rejects it as **not pure**. Poole also explains that he caught a glimpse of the man inside and he looked barely human.
 >
-> This guide is last tested with @napi-rs/canvas^0.1.20, so make sure you have
-> this or a similar version after installation.
-{: .block-tip }
+> -- <a href="https://www.bbc.co.uk/bitesize/guides/zbtjnrd/revision/6"><cite>The death of Jekyll</cite></a>
+
+-----
+
+See Not Pure Poole in action with [the demo site](https://vszhub.github.io/not-pure-poole/).
+
+![Screenshot](screenshot.png)
+
+## Table of Contents <!-- omit in toc -->
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Configuration](#configuration)
+  - [Customizing Head](#customizing-head)
+  - [Creating Themes](#creating-themes)
+  - [Customizing Navigation](#customizing-navigation)
+  - [Customizing Cover Image](#customizing-cover-image)
+  - [Customizing Social Links](#customizing-social-links)
+  - [Enabling Posts Archive](#enabling-posts-archive)
+  - [Enabling TOC](#enabling-toc)
+  - [Enabling MathJax](#enabling-mathjax)
+  - [Something More](#something-more)
+- [Development](#development)
+- [License](#license)
+
+## Features
+
+- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
+- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
+- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
+- [Jekyll Gist](https://github.com/jekyll/jekyll-gist)
+- [Google Analytics](https://analytics.google.com/)
+- [Disqus](https://disqus.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [MathJax](https://www.mathjax.org/)
+- Dark mode (enabled automatically via CSS media query)
+- Posts archive by dates, categories, and tags
+- Pagination, generated by [Jekyll Paginate](https://github.com/jekyll/jekyll-paginate)
+- TOC (generated by Vladimir "allejo" Jimenez's [jekyll-toc](https://github.com/allejo/jekyll-toc))
+- Related posts (time-based, because Jekyll) below each post
+- Mobile friendly design and development
+- Easily scalable text and component sizing with `rem` units in the CSS
+- Support for a wide gamut of HTML elements
+- Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)
+
+## Installation
+
+You can choose one of the following methods to install Not Pure Poole:
+
+- Directly specify the `not-pure-poole` gem.
+
+    1. Add `gem 'not-pure-poole'` into your `Gemfile`.
+    2. Add the below lines into your `_config.yml`.
+
+        ```yml
+        plugins:
+          - not-pure-poole
+        ```
+
+- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Not Pure Poole.
+
+    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
+    2. Add the below lines into your `_config.yml`.
+
+        ```yml
+        plugins:
+          - jekyll-remote-theme
+
+        remote_theme: vszhub/not-pure-poole
+        ```
+
+## Usage
+
+You can read this [example post](https://vszhub.github.io/not-pure-poole/2020/09/29/welcome-to-not-pure-poole/) to see the rendering result in this theme, and put the [source](_posts/2020-09-29-welcome-to-not-pure-poole.md) aside to learn some basic usages.
+
+### Configuration
+
+The [`_config.yml`](_config.yml) file in this repository already contains some variables, you can try to override them in your repository.
+
+### Customizing Head
+
+Not Pure Poole leaves a placeholder to allow defining custom head, in principle, you can add anything here, e.g. favicons. All you need to do is just creating a file `_includes/custom-head.html` and put data into it.
+
+### Creating Themes
+
+If you want to make your own color schemes, modify the CSS variables in the `_sass/_variables.scss` stylesheet with a scoped data attribute or class name.
+
+For example, below we've created the beginnings of a blue theme:
+
+```scss
+// Example blue theme
+[data-theme="blue"] {
+  --body-bg: var(--blue);
+  --body-color: #fff;
+}
 ```
 
-Rendered page can be previewed from
+Then, apply the theme by adding `data-theme="blue"` to the `<html>` element.
 
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html)
+### Customizing Navigation
 
-## Cover image inside pages
+You can create a file `_data/navigation.yml` to configure links to some pages. For example,
 
-The jekyll-gitbook theme supports adding a cover image to a specific page by adding
-a `cover` field to the page metadata:
-
-```diff
-  ---
-  title: Page with cover image
-  author: Tao He
-  date: 2022-05-24
-  category: Jekyll
-  layout: post
-+ cover: /assets/jekyll-gitbook/dinosaur.gif
-  ---
+```yml
+- title: Blog
+  url: /
+- title: About
+  url: /about/
 ```
 
-The effect can be previewed from
+### Customizing Cover Image
 
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-05-24-page_cover.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-05-24-page_cover.html)
+You can set your own cover image by modifying the `cover_image` variable in `_config.yml`, and you can also set different cover images on different pages by setting the `cover_image` variable on each page.
 
-## Diagrams with mermaid.js
+If you discover that the contrast between the cover text color and the cover background color is not enough, you can also adjust these two variables:
 
-This jekyll-theme supports [mermaid.js](https://mermaid.js.org/) to render diagrams
-in markdown.
+```yml
+cover_bg_color: rgb(40, 73, 77)
+cover_color: rgb(255, 255, 255)
+```
 
-To enable the mermaid support, you need to set `mermaid: true` in the front matter
-of your post.
+### Customizing Social Links
 
-```markdown
+You can set your social links in `_data/social.yml`. You can custom titles, URLs, and icons (only support [Font Awesome](https://fontawesome.com/) currently), for example:
+
+```yml
+- title: Email
+  url: mailto://vszhub@gmail.com
+  icon: fas fa-envelope
+- title: Twitter
+  url: https://twitter.com/vszhub
+  icon: fab fa-twitter
+- title: GitHub
+  url: https://github.com/vszhub/not-pure-poole
+  icon: fab fa-github
+```
+
+### Enabling Posts Archive
+
+Not Pure Poole supports posts archive by date, categories, and tags. For enabling that, you should put some data like below into `_data/archive.yml`:
+
+```yml
+- type: dates
+  title: Dates
+  url: /dates/
+- type: categories
+  title: Categories
+  url: /categories/
+- type: tags
+  title: Tags
+  url: /tags/
+```
+
+After that, the navigation to these archive pages would be shown on the top of the homepage.
+
+Then, you can create a category archive page, and set the below parameters on that page:
+
+```yml
 ---
-mermaid: true
+layout: archive-taxonomies
+type: categories
 ---
 ```
 
-The example can be previewed from
+Or a tag archive page:
 
-[https://sighingnow.github.io/jekyll-gitbook/jekyll/2023-08-31-mermaid.html](https://sighingnow.github.io/jekyll-gitbook/jekyll/2023-08-31-mermaid.html)
+```yml
+layout: archive-taxonomies
+type: tags
+```
+
+Or archive by dates:
+
+```yml
+layout: archive-dates
+```
+
+### Enabling TOC
+
+If you want to show the TOC of a page on the right side, just set `toc: true` on that page.
+
+### Enabling MathJax
+
+If you want to write mathematics on a page, just set `math: true` on that page to enable MathJax.
+
+### Something More
+
+Just **hack** into the code and see what you can get.
+
+## Development
+
+To set up your environment to develop this theme, run `bundle install`.
+
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `not-pure-poole.gemspec` accordingly.
 
 ## License
 
-This work is open sourced under the Apache License, Version 2.0.
-
-Copyright 2019 Tao He.
-
-[1]: https://pages.github.com
-[2]: https://pages.github.com/themes
-[3]: https://github.com/sighingnow/jekyll-gitbook/fork
-[4]: https://github.com/allejo/jekyll-toc
-[5]: https://github.com/gitbook-plugins/gitbook-plugin-search-pro
-[6]: https://github.com/rouge-ruby/rouge/tree/master/lib/rouge/themes
-[7]: https://analytics.google.com/analytics/web/
-[8]: https://www.cnzz.com/
-[9]: https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
-[10]: https://github.com/sighingnow/jekyll-gitbook/blob/master/gitbook/custom.css
-[11]: https://discordjs.guide/popular-topics/canvas.html#setting-up-napi-rs-canvas
-[12]: https://rubygems.org/gems/jekyll-remote-theme
-[13]: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
-[14]: https://github.com/sighingnow/jekyll-gitbook/blob/master/_config.yml
-[15]: https://jekyllrb.com/docs/collections/
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
