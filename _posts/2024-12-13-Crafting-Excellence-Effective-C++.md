@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Crafting Excellence Effective C++ #1
+title: Crafting Excellence Effective C++ 1
 author: Yuhan Zhang
 tags:
-- jekyll theme
-- jekyll
+- C++
+- Effective C++
 date: 2024-12-13 22:00 +0800
 ---
 # 0 导读
