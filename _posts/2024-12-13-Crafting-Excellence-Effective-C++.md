@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Crafting Excellence Effective C++ 1
+title: Crafting Excellence Effective C++ Ch.1
 author: Yuhan Zhang
 tags:
-- C++
-- Effective C++
+- "C++"
+- "Effective C++"
 date: 2024-12-13 22:00 +0800
 ---
 # 0 导读
