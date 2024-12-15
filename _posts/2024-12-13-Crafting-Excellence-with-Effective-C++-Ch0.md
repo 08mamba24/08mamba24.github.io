@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Crafting Excellence Effective C++ Ch.0
+title: Crafting Excellence with Effective C++ Ch.0
 author: Yuhan Zhang
 tags:
 - cpp
 date: 2024-12-13 22:00 +0800
 ---
-# 0 导读
+# 0 Introduction
 作者提出的忠告大致分为两类：一般性的设计策略，以及带有具体细节的特定语言特性。
 
 例如什么是赋值（assignment）操作符的return type?何时改令析构函数为virtual？当operatornew无法找到足够内存时该怎么办？这些细节很是重要。
