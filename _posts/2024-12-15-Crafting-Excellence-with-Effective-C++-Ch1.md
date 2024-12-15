@@ -6,7 +6,7 @@ tags:
 - cpp
 date: 2024-12-15 22:00 +0800
 ---
-# 1 Accustoing Yourself to C++
+# 1 Accustoming Yourself to C++
 ## Item.1: View C++ as a federation of languages（将c++视作一个语言联邦）
 C++ 最初是 C 的扩展，加入了面向对象（object-oriented）的特性。它最初的名字 "C with Classes" 就反映了这一点。
 
