@@ -18,19 +18,19 @@ C++ 最初是 C 的扩展，加入了面向对象（object-oriented）的特性�
 
 - C 
 
-C++ 的核心依然建立在 C 的基础之上。代码块（blocks）、语句（statements）、预处理器指令（preprocessor directives）、内置数据类型（built-in data types）、数组（arrays） 和 指针（pointers） 都源自 C。许多时候，C++ 提供的是对 C 中问题的高级解决方案（例如，*Item.2* 讨论了预处理器的替代方案，*Item.13* 涉及使用对象管理资源）。然而，当你在 C++ 的 C 部分中编程时，编程规范受限于 C 的局限性：没有 模板（templates）、没有 异常（exceptions）、没有 重载（overloading）等。 
+C++ 的核心依然建立在 C 的基础之上。代码块（blocks）、语句（statements）、预处理器（preprocessor）、内置数据类型（built-in data types）、数组（arrays） 和 指针（pointers） 都源自 C。许多时候，C++ 提供的是对 C 中问题的高级解决方案（例如，*Item.2* 讨论了预处理器的替代方案，*Item.13* 涉及使用对象管理资源）。然而，当你在 C++ 的 C 部分中编程时，编程规范受限于 C 的局限性：没有 模板（templates）、没有 异常（exceptions）、没有 重载（overloading）等。 
 
 - Object-Oriented C++
 
-这部分也就是C with Classes 所诉求的，classes（包括构造和洗头），封装encapsulation，继承inheritance，多态polymorphism，虚函数virtual functions动态绑定等。
+这部分也就是C with Classes 所诉求的，classes（包括构造和析构），封装encapsulation，继承inheritance，多态polymorphism，虚函数virtual functions动态绑定等。
 - Template C++
 
-模板（template）相关的考量贯穿整个 C++ 语言。有许多编程准则仅适用于模板（例如，*Item.46* 讨论了在调用模板函数时如何协助类型转换）。模板的强大威力催生了一种新的编程范式，称为 模板元编程（template metaprogramming, TMP）。虽然 *Item.48* 提供了 TMP 的概述，但除非你是“模板激进派（template enthusiast）”的核心成员，大多数情况下无需过于担忧这些内容。TMP 的规则很少会与 C++ 的主流编程实践交叉。
+模板（template）相关的考量贯穿整个 C++ 语言。有许多编程准则仅适用于模板（例如，*Item.46* 讨论了在调用模板函数时如何协助类型转换），进而有了新的编程范式--模板元编程（template metaprogramming, TMP）。虽然 *Item.48* 提供了 TMP 的概述，但除非你是“模板激进派（template enthusiast）”的核心成员，大多数情况下无需过于担忧这些内容。TMP 的规则很少会与 C++ 的主流编程实践交叉。
 - STL
 
 STL 是一个基于模板（template）的库，它为 容器（containers）、迭代器（iterators）、算法（algorithms） 和 函数对象（function objects） 提供了一个紧密配合且协调一致的框架。
 
-记住这四个次语言，当你从某个次语言切换到另一个，导致高效编程守则要求你改变策略时，不要惊讶。例如对内置（也就是C-like）类型而言*pass-by-value*通常比*pass-by-referenc*e高效，但是当你从C part of C++ 切换到 Object-Oriented C++ 时，由于用户自定义（user-defined）构造函数和析构函数的存在，*pass-by-reference-to-const*往往更好。运用Template C++时有妻如此，因为彼时你甚至不知道所处理的对象的类型。然而一旦跨入STL你就会了解，迭代器和函数对象都是在C指针之上塑造出来的，因此旧式的C *pass-by-value*再次适用（参数传递方式的选择细节请见*Item.20*）。
+记住这四个次语言，当你从某个次语言切换到另一个，导致高效编程守则要求你改变策略时，不要惊讶。例如对内置（也就是C-like）类型而言*pass-by-value*通常比*pass-by-referenc*e高效，但是当你从C part of C++ 切换到 Object-Oriented C++ 时，由于用户自定义（user-defined）构造函数和析构函数的存在，*pass-by-reference-to-const*往往更好。运用Template C++时尤其如此，因为彼时你甚至不知道所处理的对象的类型。然而一旦跨入STL你就会了解，迭代器和函数对象都是在C指针之上塑造出来的，因此旧式的C *pass-by-value*再次适用（参数传递方式的选择细节请见*Item.20*）。
 
 ## Item.2: Prefer consts, enums, and inlines to #defines（优先使用const、enum、inline替换#define）
 
@@ -52,4 +52,3 @@ const double ASPECT_RATIO = 1.653;
 2. 避免重复代码：编译器确保const常量仅存储一次（通常在制度数据段），而不会像宏直接进行多次替换，减少重复代码生成的可能性
 3. 类型安全：宏定义的值是无类型的，但const常量有明确的类型，编译器会进行类型检查，从而避免隐式类型转换带来的问题。
 
- 
