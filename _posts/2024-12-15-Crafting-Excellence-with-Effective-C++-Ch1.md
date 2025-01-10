@@ -44,11 +44,24 @@ const double ASPECT_RATIO = 1.653;
 ```
 作为一个语言常量，ASPECT_RATIO肯定会被编译器看到，因此它被置于记号表内。
 
-此外对于浮点常量（floating point constant）而言，使用常量可能比适用#define导致较小量的码，因为预处理器“盲目地将宏名称ASPECT_RATIO替换成1.653”可能导致目标码（object code）出现多分1.653；而常量则不会。
+此外对于浮点常量（floating point constant）而言，使用常量可能比适用#define导致较小量的码，因为预处理器“盲目地将宏名称ASPECT_RATIO替换成1.653”可能导致目标码（object code）出现多份1.653；而常量则不会。
 
 **Tip 4**:
 使用const常量代替#define有以下几点优势
 1. 可见性：存储在记号表内，方便问题定位
 2. 避免重复代码：编译器确保const常量仅存储一次（通常在制度数据段），而不会像宏直接进行多次替换，减少重复代码生成的可能性
 3. 类型安全：宏定义的值是无类型的，但const常量有明确的类型，编译器会进行类型检查，从而避免隐式类型转换带来的问题。
+
+值得注意的特殊情况：
+1. 定义常量指针constant pointers。由于常量定义通常被放在头文件内（以便被不同的源码包含），因此有必要讲指针声明为const，以免指针指向被修改。例如要在头文件内定义一个指向和内容都不变的基于char*的字符串： `const char* authorName = "Scott Meyers";`，而`const std::string authorName("Scott Meyers");`在大多数情况下比前者要更好。
+2. class专属常量。为了限制其作用域，必须使其成为成员，而为了确保常量最多只有一个副本，必须是static
+```cpp
+class GamePlayer {
+private:
+    static const int NumTurns = 5; // constant declaration
+    int scores[NumTurns]; // use of constant
+};
+```
+然而你看到的是NumTurns的声明式而非定义式。通常c++要求你对使用的东西提供一个定义式，但是如果是class专属常量又是static且为整数类型integral type（ints, chars, bools），则需特殊处理。只要不取其地址，则可以声明并使用它们而无须提供定义式。S
+
 
