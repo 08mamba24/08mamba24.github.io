@@ -1,7 +1,7 @@
 # Setup
-title: Yuhan's Zoom
-description: A place to say something
-url: https://vszhub.github.io
+title: Yuhan's Blog
+description: A blog about C++ programming and software development
+url: https://08mamba24.github.io
 avatar: /avatar.jpeg
 paginate: 5
 permalink: pretty
@@ -29,16 +29,15 @@ exclude:
 
 # Optimize Jekyl SEO Tag
 twitter:
-  username: vszhub
+  username: 08mamba24
   card: summary
 logo: logo.png
 social:
-  name: Songzi Vong
+  name: Yuhan Zhang
   links:
-    - https://twitter.com/vszhub
-    - https://github.com/vszhub
+    - https://github.com/08mamba24
 google_site_verification: xxxxx
-lang: en
+lang: zh-CN
 
 sass:
   sass_dir: _sass
@@ -54,6 +53,6 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Songzi Vong
-  url: https://github.com/vszhub/
-  email: vszhub@gmail.com
+  name: Yuhan Zhang
+  url: https://github.com/08mamba24/
+  email: yuhan@example.com

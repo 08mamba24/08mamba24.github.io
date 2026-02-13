@@ -67,6 +67,16 @@
   }
 }
 
+[data-theme="custom-blue"] {
+  --body-bg: #f0f4f8;
+  --body-color: #2c3e50;
+  --link-color: #2980b9;
+  --link-hover-color: #3498db;
+  --heading-color: #1a252f;
+  --code-bg: #ecf0f1;
+  --code-color: #8e44ad;
+}
+
 $sm-width: 35.5rem;
 $md-width: 48rem;
 $lg-width: 64rem;
