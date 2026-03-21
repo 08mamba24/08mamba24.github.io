@@ -90,7 +90,7 @@ classDiagram
     direction LR
     
     class TVMFFIAny {
-        &lt;&lt;16字节紧凑表示&gt;&gt;
+        <<16字节紧凑表示>>
         +int32_t type_index
         +uint32_t zero_padding / small_str_len
         --
@@ -119,7 +119,7 @@ classDiagram
     direction TB
     
     class Object {
-        &lt;&lt;base&gt;&gt;
+        <<base>>
         #TVMFFIObject header_
         +IsInstance~T~() bool
         +type_index() int32_t
@@ -177,15 +177,15 @@ classDiagram
         +static constexpr _type_index = 73
     }
     
-    Object &lt;|-- StringObj : 继承
-    Object &lt;|-- BytesObj : 继承
-    Object &lt;|-- ErrorObj : 继承
-    Object &lt;|-- FunctionObj : 继承
-    Object &lt;|-- ShapeObj : 继承
-    Object &lt;|-- TensorObj : 继承
-    Object &lt;|-- ArrayObj : 继承
-    Object &lt;|-- MapObj : 继承
-    Object &lt;|-- ModuleObj : 继承
+    Object <|-- StringObj : 继承
+    Object <|-- BytesObj : 继承
+    Object <|-- ErrorObj : 继承
+    Object <|-- FunctionObj : 继承
+    Object <|-- ShapeObj : 继承
+    Object <|-- TensorObj : 继承
+    Object <|-- ArrayObj : 继承
+    Object <|-- MapObj : 继承
+    Object <|-- ModuleObj : 继承
     
     note for Object "Object: 所有堆对象的基类<br/>24字节对象头结构:<br/>- combined_ref_count (8B)<br/>  低32位=强引用, 高32位=弱引用<br/>- type_index (4B) 运行时类型<br/>- deleter (8B) 析构函数指针<br/><br/>延迟析构策略:<br/>强引用归零 → 调用析构函数<br/>弱引用归零 → 释放内存"
 ```
@@ -197,7 +197,7 @@ classDiagram
     direction TB
     
     class ObjectRef {
-        &lt;&lt;base reference&gt;&gt;
+        <<base reference>>
         #ObjectPtr~Object~ data_
         +get() const Object*
         +defined() bool
@@ -254,13 +254,13 @@ classDiagram
         +shape() Shape
     }
     
-    ObjectRef &lt;|-- String
-    ObjectRef &lt;|-- Bytes
-    ObjectRef &lt;|-- Function
-    ObjectRef &lt;|-- Array
-    ObjectRef &lt;|-- Map
-    ObjectRef &lt;|-- Shape
-    ObjectRef &lt;|-- Tensor
+    ObjectRef <|-- String
+    ObjectRef <|-- Bytes
+    ObjectRef <|-- Function
+    ObjectRef <|-- Array
+    ObjectRef <|-- Map
+    ObjectRef <|-- Shape
+    ObjectRef <|-- Tensor
     
     note for ObjectRef "ObjectRef: 引用基类<br/>设计模式:<br/>Object = 数据(电视机)<br/>ObjectRef = 遥控器<br/><br/>特点:<br/>- 可复制(增加引用计数)<br/>- 可移动(零成本转移)<br/>- RAII自动管理生命周期<br/>- 空引用为nullptr"
     note for String "String: 字符串引用<br/>小字符串优化:<br/>≤7字节: 栈上存储<br/>>7字节: 堆上分配<br/><br/>与std::string互操作:<br/>可隐式转换, 零成本抽象"
@@ -274,18 +274,18 @@ classDiagram
     direction LR
     
     class ObjectPtr~T~ {
-        &lt;&lt;strong reference&gt;&gt;
+        <<strong reference>>
         -Object* data_
         +get() T*
         +reset()
         +use_count() int
         +unique() bool
         +operator*()
-        +operator-&gt;()
+        +operator->()
     }
     
     class WeakObjectPtr~T~ {
-        &lt;&lt;weak reference&gt;&gt;
+        <<weak reference>>
         -Object* data_
         +lock() ObjectPtr~T~
         +expired() bool
@@ -296,8 +296,8 @@ classDiagram
         #TVMFFIObject header_
     }
     
-    ObjectPtr "1" --&gt; "1" Object : 强引用管理
-    WeakObjectPtr "1" --&gt; "1" Object : 弱引用观察
+    ObjectPtr "1" --> "1" Object : 强引用管理
+    WeakObjectPtr "1" --> "1" Object : 弱引用观察
     
     note for ObjectPtr "ObjectPtr: 强引用智能指针<br/>强引用语义:<br/>- 持有对象所有权<br/>- 阻止对象析构<br/>- 可修改对象内容<br/><br/>生命周期管理:<br/>构造 → IncRef() 增加计数<br/>析构 → DecRef() 减少计数<br/>归零 → 析构函数被调用"
     note for WeakObjectPtr "WeakObjectPtr: 弱引用智能指针<br/>弱引用语义:<br/>- 不持有所有权<br/>- 不阻止对象析构<br/>- 用于观察/缓存<br/><br/>安全升级:<br/>lock() 返回强引用<br/>如果对象已销毁返回null<br/>检查 expired() 确保安全"
@@ -310,8 +310,8 @@ classDiagram
     direction TB
     
     class AnyView {
-        &lt;&lt;non-owning view&gt;&gt;
-        &lt;&lt;16 bytes&gt;&gt;
+        <<non-owning view>>
+        <<16 bytes>>
         #TVMFFIAny data_
         +as~T~() optional~T~
         +cast~T~() T
@@ -320,15 +320,15 @@ classDiagram
     }
     
     class Any {
-        &lt;&lt;owning value&gt;&gt;
-        &lt;&lt;16 bytes&gt;&gt;
+        <<owning value>>
+        <<16 bytes>>
         +Any()
         +~Any()
         +Any(T value)
         +reset()
     }
     
-    AnyView &lt;|-- Any : extends
+    AnyView <|-- Any : extends
     
     note for AnyView "AnyView: 非拥有视图<br/>特点:<br/>- 零成本传递<br/>- 不管理生命周期<br/>- 不增加引用计数<br/><br/>适用场景:<br/>- 函数参数传递<br/>- 临时数据访问<br/>- 不需要所有权"
     note for Any "Any: 拥有值<br/>特点:<br/>- 自动生命周期管理<br/>- 可存储任意类型<br/>- 类型安全<br/><br/>适用场景:<br/>- 函数返回值<br/>- 容器元素<br/>- 长期数据存储"
