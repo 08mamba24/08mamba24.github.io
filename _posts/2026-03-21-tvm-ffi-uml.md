@@ -433,9 +433,9 @@ flowchart TB
         TN["Tensor"]
     end
     
-    CO --> OBJ : header 头部
-    CA --> ANYV : data 数据
-    ANYV --> ANY : 继承扩展
+    CO -->|header 头部| OBJ
+    CA -->|data 数据| ANYV
+    ANYV -->|继承扩展| ANY
     
     OBJ --> SO
     OBJ --> BO
@@ -455,8 +455,8 @@ flowchart TB
     OREF --> SH
     OREF --> TN
     
-    OPTR --> OREF : contains 包含
-    WOPTR -.-> OBJ : observes 观察
+    OPTR -->|contains 包含| OREF
+    WOPTR -.->|observes 观察| OBJ
     
     style CLAYER fill:#ffebee
     style CPPLAYER fill:#e8f5e9
